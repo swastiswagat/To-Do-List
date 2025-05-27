@@ -5,17 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>To-Do List App</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
 <body>
+  <div class="theme-toggle">
+    <label class="switch">
+      <input type="checkbox" id="themeSwitch" />
+      <span class="slider round"></span>
+    </label>
+  </div>
+  <div id="toast-container"></div>
   <div class="container">
-    <h1 data-aos="fade-right" data-aos-duration="3000">My <span class="gradient"> To </span> Do <span class="gradient">List</span></h1>
+    <h1 data-aos="fade-right" data-aos-duration="3000">
+      My <span class="gradient">To</span> Do <span class="gradient">List</span>
+    </h1>
 
     <div class="input-section">
       <input type="text" id="task-input" placeholder="Add a new task" />
-      <button onclick="addTask()">Add</button>
+      <span class="add-button">
+        <button onclick="addTask()">
+          <box-icon name='plus-circle' type='solid'></box-icon>
+        </button>
+      </span>
     </div>
+
+    <div id="loader">Loading...</div>
     <ul id="task-list"></ul>
   </div>
+
   <script type="module" src="script.js"></script>
 </body>
 </html>
