@@ -133,7 +133,7 @@ function showToast(message) {
 
   setTimeout(() => {
     toast.remove();
-  }, 3000);
+  }, 700);
 }
 
 const themeSwitch = document.getElementById("themeSwitch");
