@@ -31,3 +31,4 @@ and animated gradient headers.
 - [Boxicons](https://boxicons.com/) – Icon Library
 
 ---
+## 📂 Folder Structure
