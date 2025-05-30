@@ -51,12 +51,21 @@ ul {
 }
 
 li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
 }
+
+li:hover {
+  transform: scale(1.02);
+}
+
 
 .add-button button {
   background-color: #ffffff;
@@ -81,7 +90,7 @@ li {
 }
 
 .delete-btn {
-  background-color: white;
+  background-color: #f9f9f9;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
