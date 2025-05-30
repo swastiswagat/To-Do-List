@@ -32,3 +32,8 @@ and animated gradient headers.
 
 ---
 ## 📂 Folder Structure
+📁 To-Do List/
+├── 📄 index.html # Main HTML structure
+├── 🎨 styles.css # Stylesheet for UI and themes
+├── ⚙️ script.js # JavaScript for functionality
+└── 📝 README.md # Project documentation
