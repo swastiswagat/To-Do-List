@@ -17,3 +17,9 @@ and animated gradient headers.
 - AI Assistant Button Placeholder (for future)
 
 ------------------------------------------------------------
+📸 Preview
+
+![Screenshot 2025-05-30 210357](https://github.com/user-attachments/assets/0bfa11ce-197c-464b-a12f-3bb950d9062b)
+
+
+------------------------------------------------------------
