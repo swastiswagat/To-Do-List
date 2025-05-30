@@ -7,14 +7,14 @@ and animated gradient headers.
 ------------------------------------------------------------
 🚀 Features
 
-- Animated Gradient Header
-- Add / Delete Tasks
-- Mark Tasks as Completed
-- Light/Dark Theme Toggle
-- Smooth UI Interactions
-- Mobile Responsive Design
-- Custom Toast Messages for Alerts
-- AI Assistant Button Placeholder (for future)
+- 🌈 **Animated Gradient Header**
+- ✍️ **Add / Delete Tasks**
+- ✅ **Mark Tasks as Completed**
+- 🌙 **Light/Dark Theme Toggle**
+- ⚡ **Smooth UI Interactions**
+- 📱 **Mobile Responsive Design**
+- 🍞 **Custom Toast Messages** for alerts
+- 🤖 **AI Assistant Button Placeholder** (for future integration)
 
 ------------------------------------------------------------
 📸 Preview
