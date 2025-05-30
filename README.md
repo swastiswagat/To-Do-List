@@ -23,3 +23,11 @@ and animated gradient headers.
 
 
 ------------------------------------------------------------
+## 🛠️ Tech Stack
+
+- **HTML5**
+- **CSS3**
+- **JavaScript (ES6+)**
+- [Boxicons](https://boxicons.com/) – Icon Library
+
+---
