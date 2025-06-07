@@ -63,7 +63,6 @@ async function renderTasks() {
   }
 }
 
-// ➕ Add task
 window.addTask = async function () {
   const input = document.getElementById("task-input");
   const text = input.value.trim();
