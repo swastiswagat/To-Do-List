@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>To-Do List App</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
+
 <body>
-  <div class="theme-toggle">
-    <label class="switch">
-      <input type="checkbox" id="themeSwitch" />
-      <span class="slider round"></span>
-    </label>
-  </div>
-
   <div id="toast-container"></div>
-
   <div class="container">
-    <h1>
-      My <span class="gradient">To</span> Do <span class="gradient">List</span>
-    </h1>
+    <div class="header-row">
+      <h1>
+        My <span class="gradient">To</span> Do <span class="gradient">List</span>
+      </h1>
+      <div class="theme-toggle fancy-toggle">
+        <input type="checkbox" id="themeSwitch" />
+        <label for="themeSwitch">
+          <span class="icon">🌞</span>
+          <span class="icon">🌙</span>
+          <span class="ball"></span>
+        </label>
+      </div>
+
+    </div>
 
     <div class="input-section">
       <input type="text" id="task-input" placeholder="Add a new task" />
@@ -34,5 +39,7 @@
   </div>
 
   <script type="module" src="script.js"></script>
+
 </body>
+
 </html>
