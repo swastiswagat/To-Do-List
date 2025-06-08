@@ -24,7 +24,7 @@ Organize your tasks efficiently with a beautiful interface, dark/light theme tog
 ## 🛠️ Tech Stack
 * HTML5
 * CSS3
-* JavaScript (ES6+)
+* JavaScript
 * Boxicons - Icon Library
 -----------------------------------------------------------------
 ## ⚙️ Setup Instructions
