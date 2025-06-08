@@ -1,142 +1,128 @@
+/* Gradient text */
 .gradient {
-  background: linear-gradient(to right,#00aaa7, #7e42a7, #6600c5, #6070fd,#2a46ff, #0099ff, #008ead);
+  background: linear-gradient(to right, #00aaa7, #6600c5, #6070fd, #2a46ff, #008ead);
   background-size: 200%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: animate-gradient 2.5s linear infinite;
+  animation: animate-gradient 3s linear infinite;
 }
 
 @keyframes animate-gradient {
-  0% {
-    background-position: 0%;
-  }
-  100% {
-    background-position: 200%;
-  }
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: #736b6b;
+  margin: 0;
   padding: 20px;
+  transition: background 0.3s;
 }
 
 .container {
-  max-width: 500px;
-  margin: auto;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
   background: white;
-  padding: 20px;
-  border-radius: 8px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .input-section {
   display: flex;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
 #task-input {
   flex: 1;
-  padding: 10px;
-  border-radius: 13px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
-button {
-  padding: 10px;
+.add-btn {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.add-btn box-icon {
+  width: 28px;
+  height: 28px;
+  color: #6070fd;
 }
 
 ul {
-  list-style-type: none;
   padding: 0;
+  list-style-type: none;
 }
 
 li {
-  background-color: #f9f9f9;
+  background: #f9f9f9;
   margin-bottom: 10px;
-  padding: 12px 16px;
-  border-radius: 12px;
+  padding: 14px 16px;
+  border-radius: 10px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-li:hover {
-  transform: scale(1.02);
-}
-
-
-.add-button button {
-  background-color: #ffffff;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.add-button button:hover {
-  background-color: #f0f0f0;
+.task-text {
+  flex: 1;
+  margin: 0 10px;
 }
 
-.add-button box-icon {
-  width: 24px;
-  height: 24px;
-  color: #6600c5;
+.task-checkbox {
+  margin-right: 10px;
 }
 
 .delete-btn {
-  background-color: #f9f9f9;
+  background: none;
   border: none;
-  padding: 5px 10px;
   cursor: pointer;
-}
-
-.completed {
-  text-decoration: line-through;
-  color: gray;
-}
-
-@media (max-width: 600px) {
-  .input-section {
-    flex-direction: column;
-  }
 }
 
 #loader {
   display: none;
   text-align: center;
-  color: white;
   font-weight: bold;
 }
+
 #toast-container {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  text-align: center;
 }
 
 .toast {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
-  padding: 12px 24px;
-  margin: 10px 0;
+  padding: 12px 20px;
+  margin-top: 10px;
   border-radius: 8px;
   animation: fadeOut 3s forwards;
 }
 
 @keyframes fadeOut {
-  0% { opacity: 1; }
-  70% { opacity: 1; }
+  0%, 70% { opacity: 1; }
   100% { opacity: 0; transform: translateY(-20px); }
 }
 
+/* Theme Switcher */
 .theme-toggle {
   position: absolute;
   top: 20px;
@@ -145,7 +131,6 @@ li:hover {
 
 .switch {
   position: relative;
-  display: inline-block;
   width: 50px;
   height: 24px;
 }
@@ -158,7 +143,6 @@ li:hover {
 
 .slider.round {
   position: absolute;
-  cursor: pointer;
   top: 0; left: 0;
   right: 0; bottom: 0;
   background-color: #ccc;
@@ -184,24 +168,25 @@ input:checked + .slider.round:before {
   transform: translateX(26px);
 }
 
+/* Dark Theme */
 body.dark {
-  background-color: #1f1f1f;
+  background-color: #1e1e1e;
   color: white;
 }
 
 body.dark .container {
-  background-color: #2e2e2e;
+  background-color: #2a2a2a;
+}
+
+body.dark li {
+  background-color: #3a3a3a;
 }
 
 body.dark input, body.dark button {
-  background-color: #3b3b3b;
+  background-color: #444;
   color: white;
 }
 
-body.dark .add-button button {
-  background-color: #3b3b3b;
-}
-
-body.dark box-icon {
+body.dark .add-btn box-icon {
   color: white;
 }
