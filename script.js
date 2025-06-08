@@ -4,7 +4,6 @@ import {
   doc, query, orderBy
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 
-// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyCT7XOOhytzvSFuY2KhfpzG0erE1IqtZN8",
   authDomain: "to-do-list-a0478.firebaseapp.com",

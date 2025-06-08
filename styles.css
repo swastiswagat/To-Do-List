@@ -13,7 +13,6 @@
   --transition: 0.3s ease;
 }
 
-/* Dark Mode */
 body.dark {
   background-color: var(--bg-dark);
   color: var(--text-light);
@@ -41,7 +40,6 @@ body.dark .container {
   background-color: var(--card-dark-bg);
 }
 
-/* Header */
 .header-row {
   display: flex;
   justify-content: space-between;
@@ -61,7 +59,6 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
-/* Input Section */
 .input-section {
   margin-top: 25px;
   display: flex;
@@ -101,7 +98,6 @@ h1 {
   opacity: 0.85;
 }
 
-/* Task List */
 ul#task-list {
   list-style: none;
   padding: 0;
@@ -152,7 +148,6 @@ ul#task-list button:hover {
   transform: scale(1.1);
 }
 
-/* Filters & Sort */
 .filter-section {
   margin-top: 20px;
   display: flex;
@@ -189,7 +184,6 @@ ul#task-list button:hover {
   font-size: 0.9rem;
 }
 
-/* Dark Theme Toggle */
 .fancy-toggle {
   display: flex;
   align-items: center;
@@ -241,8 +235,6 @@ body.dark .fancy-toggle label {
   background: #444;
 }
 
-
-/* Toast */
 #toast-container {
   position: fixed;
   top: 20px;
@@ -272,7 +264,6 @@ body.dark .fancy-toggle label {
   }
 }
 
-/* Loader */
 #loader {
   display: none;
   text-align: center;
