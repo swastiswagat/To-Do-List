@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>To-Do List App</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css"/>
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
-
 <body>
   <div id="toast-container"></div>
   <div class="container">
     <div class="header-row">
-      <h1>
-        My <span class="gradient">To</span> Do <span class="gradient">List</span>
-      </h1>
+      <h1>My <span class="gradient">To</span> Do <span class="gradient">List</span></h1>
       <div class="theme-toggle fancy-toggle">
-        <input type="checkbox" id="themeSwitch" />
+        <input type="checkbox" id="themeSwitch"/>
         <label for="themeSwitch">
           <span class="icon">🌞</span>
           <span class="icon">🌙</span>
           <span class="ball"></span>
         </label>
       </div>
-
     </div>
 
     <div class="input-section">
-      <input type="text" id="task-input" placeholder="Add a new task" />
+      <input type="text" id="task-input" placeholder="Add a new task"/>
       <button onclick="addTask()" class="add-btn">
         <box-icon name='plus-circle' type='solid'></box-icon>
       </button>
     </div>
 
     <div id="loader">Loading...</div>
+
+    <div class="filter-section">
+      <div class="view-buttons">
+        <button class="view-btn active" data-filter="all" onclick="setFilter('all')">All</button>
+        <button class="view-btn" data-filter="completed" onclick="setFilter('completed')">Completed</button>
+        <button class="view-btn" data-filter="incomplete" onclick="setFilter('incomplete')">Incomplete</button>
+      </div>
+      <div class="sort-dropdown">
+        <select id="sort-select" onchange="setSort(this.value)">
+          <option value="desc">Newest</option>
+          <option value="asc">Oldest</option>
+        </select>
+      </div>
+    </div>
+
     <ul id="task-list"></ul>
+    <div id="task-count" class="task-count"></div>
   </div>
 
   <script type="module" src="script.js"></script>
-
 </body>
-
 </html>

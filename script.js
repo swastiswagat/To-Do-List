@@ -1,16 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import {
-  getFirestore,
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  query,
-  orderBy
+  getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc,
+  doc, query, orderBy
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 
+// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyCT7XOOhytzvSFuY2KhfpzG0erE1IqtZN8",
   authDomain: "to-do-list-a0478.firebaseapp.com",
@@ -24,52 +18,27 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const tasksRef = collection(db, "tasks");
 
-async function renderTasks() {
-  const list = document.getElementById("task-list");
-  list.innerHTML = "";
-  try {
-    const taskQuery = query(tasksRef, orderBy("createdAt", "desc"));
-    const snapshot = await getDocs(taskQuery);
-    snapshot.forEach(docSnap => {
-      const task = docSnap.data();
-      const li = document.createElement("li");
-      li.innerHTML = `
-        <input 
-          type="checkbox" 
-          class="task-checkbox" 
-          ${task.completed ? "checked" : ""} 
-          onchange="toggleComplete('${docSnap.id}', ${!task.completed})" 
-        />
-        <span 
-          class="task-text" 
-          contenteditable="true" 
-          onblur="editTask('${docSnap.id}', this)"
-        >
-          ${task.text}
-        </span>
-        <button 
-          class="delete-btn" 
-          onclick="deleteTask('${docSnap.id}')"
-        >
-          <box-icon name='trash-alt' type='solid' class="trash-icon"></box-icon>
-        </button>
-      `;
-      if (task.completed) li.classList.add("completed");
-      list.appendChild(li);
-    });
-  } catch (err) {
-    console.error("Error fetching tasks:", err);
-    showToast("❌ Failed to load tasks.");
-  }
-}
+let currentSort = "desc";
+let currentFilter = "all";
 
-window.addTask = async function () {
+window.setSort = (order) => {
+  currentSort = order;
+  renderTasks();
+};
+
+window.setFilter = (filter) => {
+  currentFilter = filter;
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === filter);
+  });
+  renderTasks();
+};
+
+window.addTask = async () => {
   const input = document.getElementById("task-input");
   const text = input.value.trim();
-  if (text === "") {
-    showToast("⚠️ Task cannot be empty!");
-    return;
-  }
+  if (!text) return showToast("⚠️ Task cannot be empty!");
+
   try {
     await addDoc(tasksRef, {
       text,
@@ -79,73 +48,102 @@ window.addTask = async function () {
     input.value = "";
     showToast("✅ Task added!");
     renderTasks();
-  } catch (err) {
-    console.error("Error adding task:", err);
+  } catch (e) {
+    console.error(e);
     showToast("❌ Failed to add task.");
   }
 };
 
-window.toggleComplete = async function (id, status) {
+window.toggleComplete = async (id, status) => {
   try {
     await updateDoc(doc(db, "tasks", id), { completed: status });
     showToast(status ? "✅ Marked complete!" : "🔄 Marked incomplete!");
     renderTasks();
-  } catch (err) {
-    console.error("Error updating task:", err);
-    showToast("❌ Failed to update task.");
+  } catch (e) {
+    console.error(e);
+    showToast("❌ Update failed.");
   }
 };
 
-window.deleteTask = async function (id) {
+window.deleteTask = async (id) => {
   try {
     await deleteDoc(doc(db, "tasks", id));
     showToast("🗑️ Task deleted!");
     renderTasks();
-  } catch (err) {
-    console.error("Error deleting task:", err);
-    showToast("❌ Failed to delete task.");
+  } catch (e) {
+    console.error(e);
+    showToast("❌ Delete failed.");
   }
 };
 
-window.editTask = async function (id, element) {
-  const text = element.innerText.trim();
+window.editTask = async (id, el) => {
+  const txt = el.innerText.trim();
   try {
-    await updateDoc(doc(db, "tasks", id), { text });
+    await updateDoc(doc(db, "tasks", id), { text: txt });
     showToast("✏️ Task updated!");
-    renderTasks();
-  } catch (err) {
-    console.error("Error editing task:", err);
-    showToast("❌ Failed to update task.");
+  } catch (e) {
+    console.error(e);
+    showToast("❌ Update failed.");
   }
 };
 
-document.getElementById("task-input").addEventListener("keydown", function (e) {
+async function renderTasks() {
+  const list = document.getElementById("task-list");
+  const loader = document.getElementById("loader");
+  loader.style.display = "block";
+  list.innerHTML = "";
+
+  try {
+    const q = query(tasksRef, orderBy("createdAt", currentSort));
+    const snap = await getDocs(q);
+    let count = 0;
+
+    snap.forEach(docSnap => {
+      const task = docSnap.data();
+      if (currentFilter === "completed" && !task.completed) return;
+      if (currentFilter === "incomplete" && task.completed) return;
+
+      const li = document.createElement("li");
+      li.className = task.completed ? "completed" : "";
+      li.innerHTML = `
+        <input type="checkbox" ${task.completed ? "checked" : ""} onchange="toggleComplete('${docSnap.id}', ${!task.completed})"/>
+        <span contenteditable="true" onblur="editTask('${docSnap.id}', this)">${task.text}</span>
+        <button onclick="deleteTask('${docSnap.id}')"><box-icon name='trash-alt' type='solid'></box-icon></button>
+      `;
+      list.appendChild(li);
+      if (!task.completed) count++;
+    });
+
+    document.getElementById("task-count").textContent = `📝 ${count} Task${count !== 1 ? "s" : ""} Going On`;
+  } catch (e) {
+    console.error(e);
+    showToast("❌ Failed to load tasks.");
+  } finally {
+    loader.style.display = "none";
+  }
+}
+
+function showToast(msg) {
+  const t = document.createElement("div");
+  t.className = "toast";
+  t.textContent = msg;
+  document.getElementById("toast-container").appendChild(t);
+  setTimeout(() => t.remove(), 1200);
+}
+
+document.getElementById("task-input").addEventListener("keydown", e => {
   if (e.key === "Enter") addTask();
 });
 
-function showToast(message) {
-  const container = document.getElementById("toast-container");
-  const toast = document.createElement("div");
-  toast.className = "toast";
-  toast.textContent = message;
-  container.appendChild(toast);
-
-  setTimeout(() => {
-    toast.remove();
-  }, 700);
-}
-
-const themeSwitch = document.getElementById("themeSwitch");
-themeSwitch.addEventListener("change", () => {
-  document.body.classList.toggle("dark", themeSwitch.checked);
-  localStorage.setItem("theme", themeSwitch.checked ? "dark" : "light");
+document.getElementById("themeSwitch").addEventListener("change", evt => {
+  document.body.classList.toggle("dark", evt.target.checked);
+  localStorage.setItem("theme", evt.target.checked ? "dark" : "light");
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
+  if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
-    themeSwitch.checked = true;
+    document.getElementById("themeSwitch").checked = true;
   }
   renderTasks();
 });
