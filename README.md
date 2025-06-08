@@ -34,9 +34,9 @@ Organize your tasks efficiently with a beautiful interface, dark/light theme tog
    git clone https://github.com/swastiswagat/todo-list-app.git
    ```
 2. **Navigate to the Project Directory**
-  ```bash
+   ```bash
    cd todo-list-app   
-  ```
+   ```
 3. Open index.html in your browser
 No build steps needed. Works out of the box!
 -----------------------------------------------------------------
