@@ -15,6 +15,7 @@ Organize your tasks efficiently with a beautiful interface, dark/light theme tog
 * 🤖 AI Assistant Button Placeholder (for future integration)
 ## 📸 Preview
 
+
 ![Preview](https://github.com/user-attachments/assets/48fef9e9-f45b-4f3a-80b2-4e1e67a8b2e1)
 
 -----------------------------------------------------------------
