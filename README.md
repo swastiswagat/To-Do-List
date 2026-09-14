@@ -45,5 +45,6 @@ No build steps needed. Works out of the box!
 This project is licensed under the MIT License.
 
 
+
 ## ✨ Contributions
 Pull requests are welcome! Feel free to fork the repo and submit PRs.
