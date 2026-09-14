@@ -8,7 +8,7 @@ Organize your tasks efficiently with a beautiful interface, dark/light theme tog
 * 🌈 Animated Gradient Header
 * ✍️ Add / Delete Tasks
 * ✅ Mark Tasks as Completed
-* 🌙 Light/Dark Theme Toggle with Emoji Ball Switch
+* 🌙 Light/Dark Theme Toggle with Emoji Ball Switch 
 * ⚡ Smooth UI Interactions
 * 📱 Mobile Responsive Design
 * 🍞 Custom Toast Messages for alerts
