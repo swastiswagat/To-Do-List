@@ -5,7 +5,7 @@ A stylish and responsive to-do list web app built using HTML, CSS, and JavaScrip
 Organize your tasks efficiently with a beautiful interface, dark/light theme toggle, and animated gradient headers.
 -----
 **🚀 Features** 
-* 🌈 Animated Gradient Header
+* 🌈 Animated Gradient Header 
 * ✍️ Add / Delete Tasks
 * ✅ Mark Tasks as Completed
 * 🌙 Light/Dark Theme Toggle with Emoji Ball Switch 
